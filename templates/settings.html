@@ -1,0 +1,76 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+settings {{ user.username }}
+{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+    <div class="container mt-3 p-5">
+      <h2>
+          Панель управления ({{ user.username }}):
+      </h2>
+      <div class="row">
+        <div class="col-12 col-md-7">
+          <div class="mb-2" style="text-align: left;">
+            <label for="userSettings"><h6>Редактирование данных пользователя, изменение или удаление чатов:</h6></label>
+            <form id="userSettings" method="post" action="/settings/" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ user_form.as_p }}
+                {% if user.profile.avatar %}
+                Текущий аватар:
+                  <img src="{{ user.profile.avatar.url }}" alt="avatar"
+                       style="max-height: 100px; border-radius: 15px;">
+                {% endif %}
+                {{ profile_form.as_p }}
+                <input type="submit" class="btn btn-success" value="Сохранить">
+                <input type="hidden" name="next" value="{{ user }}">
+            </form>
+          </div>
+        </div>
+        <div class="col-12 col-md-5">
+          <label for="roomSelect">Выберите чат, который нужно изменить:</label>
+          <select multiple class="form-control" id="roomSelect">
+          </select>
+          <div class="mb-1">
+          <small id="roomSelectHelp" class="form-text text-muted">
+            (доступно, если в чате нет активных пользователей)
+          </small>
+          </div>
+            <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="roomInput"
+              placeholder="Чат, который нужно изменить"
+              readonly
+            />
+          <div class="input-group-append">
+          <button type="button" id="roomDelete" class="btn btn-success">
+            Удалить
+          </button>
+          </div>
+          </div>
+            <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="roomRename"
+              placeholder="Введите новое наименование"
+            />
+          <div class="input-group-append">
+          <button type="button" id="sendNewName" class="btn btn-success">
+            Переименовать
+          </button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'js/settings.js' %}"></script>
+{% else %}
+<h2>Необходимо авторизоваться!</h2>
+{% endif %}
+{% endblock content %}

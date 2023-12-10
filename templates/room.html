@@ -1,0 +1,67 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+chat-room
+{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+    <div class="container mt-3 p-5">
+      <h2>
+        Онлайн чат ( пользователь:
+        {{ request.user }}
+        {% if user.profile.avatar %}
+        <img src="{{ user.profile.avatar.url }}" alt="Avatar" class="logo-image"
+            style="max-height: 40px; border-radius: 15px;">
+        {% endif %}
+        )
+      </h2>
+      <div class="row">
+        <div class="col-12 col-md-8">
+          <div class="mb-2">
+            <label for="chatLog">Комната: #{{ room.name }}</label>
+            <textarea class="form-control" id="chatLog" readonly></textarea>
+          </div>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="chatMessageInput"
+              placeholder="Сообщение в чат"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-success"
+                id="chatMessageSend"
+                type="button"
+              >
+                Отправить
+              </button>
+            </div>
+          </div>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="privateMessageInput"
+              placeholder="Выберите пользователя онлайн для отправки личного сообщения"
+            />
+            <div class="input-group-append" id="buttonArea">
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <label for="onlineUsersSelector">Пользователи онлайн</label>
+          <select multiple class="form-control" id="onlineUsersSelector">
+          </select>
+        </div>
+      </div>
+      {{ room.name|json_script:"roomName" }} {{ request.user.pk|json_script:"user_pk" }}
+    </div>
+    <script src="{% static 'js/room.js' %}"></script>
+{% else %}
+<h2>Необходимо авторизоваться!</h2>
+{% endif %}
+{% endblock content %}
