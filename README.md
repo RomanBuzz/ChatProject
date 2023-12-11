@@ -49,31 +49,24 @@
 ## Установка проекта
 *Инструкция для Windows.*
 
-<br>
 #### 1) Клонировать репозиторий в каталог ChatProject_dir:
-<br>
-<br> git clone https://github.com/RomanBuzz/ChatProject
-<br><br>
+git clone https://github.com/RomanBuzz/ChatProject
+
 #### 2) В каталоге ChatProject_dir настроить виртуальную среду:
-<br>
-<br> python -m venv venv
+python -m venv venv
 <br> venv\scripts\activate
-<br><br>
+
 #### 3) Выбрать каталог ChatProject как корневой:
-<br>
-<br> cd .\ChatProject\
-<br><br>
+cd .\ChatProject\
+
 #### 4) Установить зависимости:
-<br>
-<br> pip install -r requirements.txt
-<br><br>
+pip install -r requirements.txt
+
 #### 5) Создать суперпользователя:
-<br>
-<br> python manage.py createsuperuser
-<br><br>
+python manage.py createsuperuser
+
 #### 6) Запустить сервер:
-<br>
-<br> python manage.py runserver
+python manage.py runserver
 <br>*(главная страница находится по url http://127.0.0.1:8000/, это локальный сервер, который запускается у вас на компьютере)*
 <br><br>
 
