@@ -47,31 +47,31 @@
 *Личные сообщения приходят только получателю, которого отправитель выбрал из списка онлайн-пользователей.*
 
 ## Установка проекта
-
 *Инструкция для Windows.*
 
-1) Клонировать репозиторий в каталог ChatProject_dir:
+<br>
+#### 1) Клонировать репозиторий в каталог ChatProject_dir:
 <br>
 <br> git clone https://github.com/RomanBuzz/ChatProject
 <br><br>
-2) В каталоге ChatProject_dir настроить виртуальную среду:
+#### 2) В каталоге ChatProject_dir настроить виртуальную среду:
 <br>
 <br> python -m venv venv
 <br> venv\scripts\activate
 <br><br>
-3) Выбрать каталог ChatProject как корневой:
+#### 3) Выбрать каталог ChatProject как корневой:
 <br>
 <br> cd .\ChatProject\
 <br><br>
-4) Установить зависимости:
+#### 4) Установить зависимости:
 <br>
 <br> pip install -r requirements.txt
 <br><br>
-5) Создать суперпользователя:
+#### 5) Создать суперпользователя:
 <br>
 <br> python manage.py createsuperuser
 <br><br>
-6) Запустить сервер:
+#### 6) Запустить сервер:
 <br>
 <br> python manage.py runserver
 <br>*(главная страница находится по url http://127.0.0.1:8000/, это локальный сервер, который запускается у вас на компьютере)*
