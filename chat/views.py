@@ -7,7 +7,7 @@ from .forms import UserForm, ProfileForm
 
 def index_view(request):
     return render(request, 'index.html', {
-        # 'rooms': Room.objects.all(),
+        # sending dynamic room-list through Django Channels
     })
 
 

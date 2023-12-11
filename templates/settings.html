@@ -15,7 +15,7 @@ settings {{ user.username }}
       <div class="row">
         <div class="col-12 col-md-7">
           <div class="mb-2" style="text-align: left;">
-            <label for="userSettings"><h6>Редактирование данных пользователя, изменение или удаление чатов:</h6></label>
+            <h6>Редактирование данных пользователя, изменение или удаление чатов:</h6>
             <form id="userSettings" method="post" action="/settings/" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ user_form.as_p }}
@@ -26,7 +26,6 @@ settings {{ user.username }}
                 {% endif %}
                 {{ profile_form.as_p }}
                 <input type="submit" class="btn btn-success" value="Сохранить">
-                <input type="hidden" name="next" value="{{ user }}">
             </form>
           </div>
         </div>
@@ -59,6 +58,7 @@ settings {{ user.username }}
               class="form-control"
               id="roomRename"
               placeholder="Введите новое наименование"
+              onkeyup="this.value = this.value.replace(/[^\w]/g,'');"
             />
           <div class="input-group-append">
           <button type="button" id="sendNewName" class="btn btn-success">

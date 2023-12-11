@@ -17,6 +17,7 @@ function roomList (roomList) {
     }
 }
 
+// renames selected room
 document.querySelector("#sendNewName").onclick = function () {
   if (roomInput.value.length === 0) return;
   if (roomRename.value.length === 0) return;
@@ -31,6 +32,7 @@ document.querySelector("#sendNewName").onclick = function () {
   roomRename.value = "";
 };
 
+// deletes selected room
 document.querySelector("#roomDelete").onclick = function () {
   if (roomInput.value.length === 0) return;
   chatSocket.send(
@@ -42,6 +44,7 @@ document.querySelector("#roomDelete").onclick = function () {
   roomInput.value = "";
 };
 
+// selects the room from the option list
 document.querySelector("#roomSelect").onchange = function () {
   let roomName = document.querySelector("#roomSelect").value.split(" (")[0];
   let userCount = document.querySelector("#roomSelect").value.split(/ \(|\)/, 2)[1];

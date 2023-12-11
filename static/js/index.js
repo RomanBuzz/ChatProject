@@ -24,15 +24,18 @@ document.querySelector("#roomInput").onkeyup = function (e) {
     // enter key
     document.querySelector("#roomConnect").click();
   }
+  else {
+    this.value = this.value.replace(/[^\w]/g,'');
+  }
 };
 
-// redirect to '/room/<roomInput>/'
+// redirect to '/chat/<roomInput>/'
 document.querySelector("#roomConnect").onclick = function () {
   let roomName = document.querySelector("#roomInput").value;
   window.location.pathname = "chat/" + roomName + "/";
 };
 
-// redirect to '/room/<roomSelect>/'
+// redirect to '/chat/<roomSelect>/'
 document.querySelector("#roomSelect").onchange = function () {
   let roomName = document.querySelector("#roomSelect").value.split(" (")[0];
   window.location.pathname = "chat/" + roomName + "/";

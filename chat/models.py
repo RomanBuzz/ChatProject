@@ -24,9 +24,9 @@ class Room(models.Model):
     name = models.CharField(max_length=255)
     online = models.ManyToManyField(to=User, blank=True)
 
+    # use the property for sending template string info to the socket
     @property
     def get_online_count(self):
-        # используем свойство для передачи имя комнаты и количества пользователей в веб-сокет
         return f'{self.name} ({self.online.count()})'
 
     def join(self, user):

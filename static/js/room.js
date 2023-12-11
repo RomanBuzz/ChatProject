@@ -46,21 +46,6 @@ function usersOfRoom (userList) {
     }
 }
 
-// adds a new option to 'onlineUsersSelector'
-function onlineUsersSelectorAdd(value) {
-  if (document.querySelector("option[value='" + value + "']")) return;
-  let newOption = document.createElement("option");
-  newOption.value = value;
-  newOption.innerHTML = value;
-  onlineUsersSelector.appendChild(newOption);
-}
-
-// removes an option from 'onlineUsersSelector'
-function onlineUsersSelectorRemove(value) {
-  let oldOption = document.querySelector("option[value='" + value + "']");
-  if (oldOption !== null) oldOption.remove();
-}
-
 // focus 'chatMessageInput' when user opens the page
 chatMessageInput.focus();
 
@@ -72,7 +57,7 @@ chatMessageInput.onkeyup = function (e) {
   }
 };
 
-// clear the 'chatMessageInput' and forward the message
+// clear the 'chatMessageInput' and forward message to WebSocket
 chatMessageSend.onclick = function () {
   if (chatMessageInput.value.length === 0) return;
   chatSocket.send(
@@ -83,7 +68,6 @@ chatMessageSend.onclick = function () {
   );
   chatMessageInput.value = "";
 };
-
 
 // WebSocket: static/room.js
 
